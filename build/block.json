@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/editable-copyright-block",
+	"version": "1.0.1",
+	"title": "Testimonial Block",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Adds the current year, with and editable prefix and suffix. Suitable for copyright notices.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "editable-copyright-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

@@ -1,0 +1,10 @@
+{
+	"apiVersion": 2,
+	"name": "swd/editable-copyright-block",
+	"title": "Editable Copyright Block",
+	"category": "text",
+	"icon": "calendar",
+	"description": "Insert current year as part of an editable paragraph.",
+	"textdomain": "editable-copyright-block",
+	"editorScript": "file:./src/index.js"
+}
