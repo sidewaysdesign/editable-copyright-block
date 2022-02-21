@@ -6,7 +6,7 @@
 	"title": "Testimonial Block",
 	"category": "widgets",
 	"icon": "calendar-alt",
-	"description": "Adds the current year, with and editable prefix and suffix. Suitable for copyright notices.",
+	"description": "Adds the current year, with an editable prefix and suffix. Suitable for copyright notices.",
 	"supports": {
 		"html": false
 	},
