@@ -3,7 +3,7 @@
 *
 * Replace them with your own styles or remove the file completely.
 */
-.editable-copyright-block {
+.current-year-with-prefix-and-suffix {
 	&_prefix,
 	&_year,
 	&_suffix {
@@ -19,7 +19,7 @@
 			content: "";
 			width: calc(100% - 3px);
 			height: 2px;
-			top: -4px;
+			top: -2px;
 			left: 0;
 			border: 1px solid currentColor;
 			border-bottom-width: 0;
@@ -73,7 +73,7 @@
 				visibility: visible;
 				height: 0.65em;
 			}
-			.editable-copyright-block {
+			.current-year-with-prefix-and-suffix {
 				&_prefix,
 				&_year,
 				&_suffix {

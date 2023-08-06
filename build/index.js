@@ -76,7 +76,7 @@ function Edit({
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: alignment,
     onChange: newAlignment => setAttributes({
-      alignment: newAlignment
+      alignment: newAlignment || null
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Display Options", "swd")
@@ -104,19 +104,19 @@ function Edit({
       });
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "editable-copyright-block_wrapper"
+    className: "current-year-with-prefix-and-suffix_wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tag, {
     ...blockProps
   }, prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "editable-copyright-block_prefix",
+    className: "current-year-with-prefix-and-suffix_prefix",
     contentEditable: true,
     suppressContentEditableWarning: true,
     onBlur: handlePrefixChange,
     onFocus: handleFocus
   }, prefix), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "editable-copyright-block_year"
+    className: "current-year-with-prefix-and-suffix_year"
   }, new Date().getFullYear()), suffix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "editable-copyright-block_suffix",
+    className: "current-year-with-prefix-and-suffix_suffix",
     contentEditable: true,
     suppressContentEditableWarning: true,
     onBlur: handleSuffixChange,
@@ -142,8 +142,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)("create-block/editable-copyright-block", {
-  title: "Editable Copyright Block",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)("create-block/current-year-with-prefix-and-suffix", {
+  title: "Current Year Block",
   category: "widgets",
   attributes: {
     htmlTag: {
@@ -248,14 +248,14 @@ function save({
   } = attributes;
   const currentYear = new Date().getFullYear();
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: "editable-copyright-block_wrapper",
+    className: "current-year-with-prefix-and-suffix_wrapper",
     style: {
       textAlign: alignment
     }
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...blockProps
-  }, `${prefix}${currentYear}${suffix}`);
+  }, `${prefix ? prefix : ""}${currentYear}${suffix ? suffix : ""}`);
 }
 
 /***/ }),

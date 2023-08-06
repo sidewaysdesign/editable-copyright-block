@@ -25,9 +25,13 @@ export default function save({ attributes }) {
 	const { prefix, suffix, customColor, alignment } = attributes;
 	const currentYear = new Date().getFullYear();
 	const blockProps = useBlockProps.save({
-		className: "editable-copyright-block_wrapper",
+		className: "current-year-with-prefix-and-suffix_wrapper",
 		style: { textAlign: alignment },
 	});
 
-	return <p {...blockProps}>{`${prefix}${currentYear}${suffix}`}</p>;
+	return (
+		<p {...blockProps}>{`${prefix ? prefix : ""}${currentYear}${
+			suffix ? suffix : ""
+		}`}</p>
+	);
 }

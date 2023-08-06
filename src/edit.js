@@ -59,7 +59,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<AlignmentToolbar
 						value={alignment}
 						onChange={(newAlignment) =>
-							setAttributes({ alignment: newAlignment })
+							setAttributes({ alignment: newAlignment || null })
 						}
 					/>
 				</ToolbarGroup>
@@ -89,11 +89,11 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="editable-copyright-block_wrapper">
+			<div className="current-year-with-prefix-and-suffix_wrapper">
 				<Tag {...blockProps}>
 					{prefix && (
 						<span
-							className="editable-copyright-block_prefix"
+							className="current-year-with-prefix-and-suffix_prefix"
 							contentEditable
 							suppressContentEditableWarning
 							onBlur={handlePrefixChange}
@@ -102,12 +102,12 @@ export default function Edit({ attributes, setAttributes }) {
 							{prefix}
 						</span>
 					)}
-					<span className="editable-copyright-block_year">
+					<span className="current-year-with-prefix-and-suffix_year">
 						{new Date().getFullYear()}
 					</span>
 					{suffix && (
 						<span
-							className="editable-copyright-block_suffix"
+							className="current-year-with-prefix-and-suffix_suffix"
 							contentEditable
 							suppressContentEditableWarning
 							onBlur={handleSuffixChange}

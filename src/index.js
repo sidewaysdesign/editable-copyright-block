@@ -5,8 +5,8 @@ import "./style.scss";
 import Edit from "./edit";
 import save from "./save";
 
-registerBlockType("create-block/editable-copyright-block", {
-	title: "Editable Copyright Block",
+registerBlockType("create-block/current-year-with-prefix-and-suffix", {
+	title: "Current Year Block",
 	category: "widgets",
 	attributes: {
 		htmlTag: {

@@ -1,10 +1,10 @@
 {
 	"apiVersion": 2,
-	"name": "swd/editable-copyright-block",
-	"title": "Editable Copyright Block",
+	"name": "swd/current-year-with-prefix-and-suffix",
+	"title": "Current Year Block",
 	"category": "text",
 	"icon": "calendar",
-	"description": "Insert current year as part of an editable paragraph.",
-	"textdomain": "editable-copyright-block",
+	"description": "Block to display current year, with editable prefix and suffix. Suitable for copyright notices.",
+	"textdomain": "current-year-with-prefix-and-suffix",
 	"editorScript": "file:./src/index.js"
 }

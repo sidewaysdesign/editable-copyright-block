@@ -6,25 +6,25 @@
 *
 * Replace them with your own styles or remove the file completely.
 */
-.editable-copyright-block_prefix, .editable-copyright-block_year, .editable-copyright-block_suffix {
+.current-year-with-prefix-and-suffix_prefix, .current-year-with-prefix-and-suffix_year, .current-year-with-prefix-and-suffix_suffix {
   position: relative;
 }
-.editable-copyright-block_prefix:before, .editable-copyright-block_prefix:after, .editable-copyright-block_year:before, .editable-copyright-block_year:after, .editable-copyright-block_suffix:before, .editable-copyright-block_suffix:after {
+.current-year-with-prefix-and-suffix_prefix:before, .current-year-with-prefix-and-suffix_prefix:after, .current-year-with-prefix-and-suffix_year:before, .current-year-with-prefix-and-suffix_year:after, .current-year-with-prefix-and-suffix_suffix:before, .current-year-with-prefix-and-suffix_suffix:after {
   position: absolute;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   visibility: hidden;
 }
-.editable-copyright-block_prefix:before, .editable-copyright-block_year:before, .editable-copyright-block_suffix:before {
+.current-year-with-prefix-and-suffix_prefix:before, .current-year-with-prefix-and-suffix_year:before, .current-year-with-prefix-and-suffix_suffix:before {
   content: "";
   width: calc(100% - 3px);
   height: 2px;
-  top: -4px;
+  top: -2px;
   left: 0;
   border: 1px solid currentColor;
   border-bottom-width: 0;
 }
-.editable-copyright-block_prefix:after, .editable-copyright-block_year:after, .editable-copyright-block_suffix:after {
+.current-year-with-prefix-and-suffix_prefix:after, .current-year-with-prefix-and-suffix_year:after, .current-year-with-prefix-and-suffix_suffix:after {
   position: absolute;
   left: 50%;
   top: -1.875em;
@@ -34,22 +34,22 @@
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
-.editable-copyright-block_year {
+.current-year-with-prefix-and-suffix_year {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
   pointer-events: none;
 }
-.editable-copyright-block_prefix:after {
+.current-year-with-prefix-and-suffix_prefix:after {
   content: "Prefix";
 }
-.editable-copyright-block_year:after {
+.current-year-with-prefix-and-suffix_year:after {
   content: "Year";
 }
-.editable-copyright-block_suffix:after {
+.current-year-with-prefix-and-suffix_suffix:after {
   content: "Suffix";
 }
-.editable-copyright-block_wrapper:before {
+.current-year-with-prefix-and-suffix_wrapper:before {
   display: block;
   height: 0;
   width: 100%;
@@ -57,14 +57,14 @@
   content: "";
   visibility: hidden;
 }
-.editable-copyright-block_wrapper:focus-within {
+.current-year-with-prefix-and-suffix_wrapper:focus-within {
   position: relative;
 }
-.editable-copyright-block_wrapper:focus-within:before {
+.current-year-with-prefix-and-suffix_wrapper:focus-within:before {
   visibility: visible;
   height: 0.65em;
 }
-.editable-copyright-block_wrapper:focus-within .editable-copyright-block_prefix:before, .editable-copyright-block_wrapper:focus-within .editable-copyright-block_prefix:after, .editable-copyright-block_wrapper:focus-within .editable-copyright-block_year:before, .editable-copyright-block_wrapper:focus-within .editable-copyright-block_year:after, .editable-copyright-block_wrapper:focus-within .editable-copyright-block_suffix:before, .editable-copyright-block_wrapper:focus-within .editable-copyright-block_suffix:after {
+.current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_prefix:before, .current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_prefix:after, .current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_year:before, .current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_year:after, .current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_suffix:before, .current-year-with-prefix-and-suffix_wrapper:focus-within .current-year-with-prefix-and-suffix_suffix:after {
   visibility: visible;
   opacity: 0.5;
 }
