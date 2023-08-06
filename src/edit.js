@@ -1,57 +1,123 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
 import { __ } from "@wordpress/i18n";
 import { useState } from "@wordpress/element";
-import { useBlockProps } from "@wordpress/block-editor";
-import { TextControl, FontSizePicker } from "@wordpress/components";
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 import "./editor.scss";
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
- */
-
-// const MY_TEMPLATE = [
-// 	[ 'core/paragraph', { textColor: 'foreground', placeholder: 'Attribution Role' } ],
-// ];
+import {
+	AlignmentToolbar,
+	BlockControls,
+	useBlockProps,
+	InspectorControls,
+} from "@wordpress/block-editor";
+import {
+	TextControl,
+	PanelBody,
+	ToolbarGroup,
+	CheckboxControl,
+	SelectControl,
+} from "@wordpress/components";
 
 export default function Edit({ attributes, setAttributes }) {
-	const currentYear = new Date().getFullYear();
-	const { prefix, suffix } = attributes;
-	// const [ prefix, setPrefix ] = useState( '©' );
-	// const [ suffix, setSuffix ] = useState( 'Company Name' );
+	const { prefix, suffix, alignment, htmlTag } = attributes;
+
+	const [initialPrefix] = useState(prefix);
+	const [initialSuffix] = useState(suffix);
 
 	const blockProps = useBlockProps({
-		className: "editable-copyright-block_wrapper",
+		style: { textAlign: alignment },
 	});
 
+	const handleFocus = (event) => {
+		const range = document.createRange();
+		range.selectNodeContents(event.target);
+		const sel = window.getSelection();
+		sel.removeAllRanges();
+		sel.addRange(range);
+	};
+
+	const handlePrefixChange = (event) => {
+		setAttributes({ prefix: event.target.textContent });
+	};
+
+	const handleSuffixChange = (event) => {
+		setAttributes({ suffix: event.target.textContent });
+	};
+
+	const handlePrefixToggle = (value) => {
+		setAttributes({ prefix: value ? initialPrefix : "" });
+	};
+
+	const handleSuffixToggle = (value) => {
+		setAttributes({ suffix: value ? initialSuffix : "" });
+	};
+
+	const Tag = htmlTag || "p"; // fallback to 'p' tag if no htmlTag selected
+
 	return (
-		<div {...blockProps}>
-			<TextControl
-				label={__("Prefix", "swd")}
-				value={prefix}
-				onChange={(val) => setAttributes({ prefix: val })}
-			/>
-			<p>{currentYear}</p>
-			<TextControl
-				label={__("Suffix", "swd")}
-				value={suffix}
-				onChange={(val) => setAttributes({ suffix: val })}
-			/>
-		</div>
+		<>
+			<BlockControls>
+				<ToolbarGroup>
+					<AlignmentToolbar
+						value={alignment}
+						onChange={(newAlignment) =>
+							setAttributes({ alignment: newAlignment })
+						}
+					/>
+				</ToolbarGroup>
+			</BlockControls>
+			<InspectorControls>
+				<PanelBody title={__("Display Options", "swd")}>
+					<CheckboxControl
+						label={__("Show Prefix", "swd")}
+						checked={!!prefix}
+						onChange={handlePrefixToggle}
+					/>
+					<CheckboxControl
+						label={__("Show Suffix", "swd")}
+						checked={!!suffix}
+						onChange={handleSuffixToggle}
+					/>
+					<SelectControl
+						label={__("HTML Element", "swd")}
+						value={htmlTag}
+						options={[
+							{ label: __("<p>"), value: "p" },
+							{ label: __("<div>"), value: "div" },
+						]}
+						onChange={(value) => {
+							setAttributes({ htmlTag: value });
+						}}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div className="editable-copyright-block_wrapper">
+				<Tag {...blockProps}>
+					{prefix && (
+						<span
+							className="editable-copyright-block_prefix"
+							contentEditable
+							suppressContentEditableWarning
+							onBlur={handlePrefixChange}
+							onFocus={handleFocus}
+						>
+							{prefix}
+						</span>
+					)}
+					<span className="editable-copyright-block_year">
+						{new Date().getFullYear()}
+					</span>
+					{suffix && (
+						<span
+							className="editable-copyright-block_suffix"
+							contentEditable
+							suppressContentEditableWarning
+							onBlur={handleSuffixChange}
+							onFocus={handleFocus}
+						>
+							{suffix}
+						</span>
+					)}
+				</Tag>
+			</div>
+		</>
 	);
 }

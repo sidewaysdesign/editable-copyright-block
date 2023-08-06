@@ -1,43 +1,53 @@
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from "@wordpress/blocks";
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './style.scss';
+import "./style.scss";
 
-/**
- * Internal dependencies
- */
-import Edit from './edit';
-import save from './save';
+import Edit from "./edit";
+import save from "./save";
 
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-registerBlockType('create-block/editable-copyright-block', {
-	title: 'Editable Copyright Block',
-	category: 'widgets',
-			attributes: {
-			prefix: {
-				type: 'string',
-				default: '©',
-			},
-			suffix: {
-				type: 'string',
-				default: '[Name of Organization]'
+registerBlockType("create-block/editable-copyright-block", {
+	title: "Editable Copyright Block",
+	category: "widgets",
+	attributes: {
+		htmlTag: {
+			type: "string",
+			default: "p",
+		},
+		prefix: {
+			type: "string",
+			default: "©",
+		},
+		suffix: {
+			type: "string",
+			default: "[Organization Name]",
+		},
+		alignment: {
+			type: "string",
+			default: "left",
+		},
+	},
+	supports: {
+		color: {
+			text: true,
+			background: true,
+			link: true,
+		},
+		spacing: true,
+		typography: {
+			fontSize: true,
+			lineHeight: true,
+			__experimentalFontFamily: true,
+			__experimentalTextDecoration: true,
+			__experimentalFontStyle: true,
+			__experimentalFontWeight: true,
+			__experimentalLetterSpacing: true,
+			__experimentalTextTransform: true,
+			__experimentalWritingMode: true,
+			__experimentalDefaultControls: {
+				fontSize: true,
 			},
 		},
+	},
 	/**
 	 * @see ./edit.js
 	 */
