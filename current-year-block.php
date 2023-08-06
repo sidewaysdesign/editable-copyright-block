@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       Editable Copyright Block
- * Description:       A block to apply the current year as part of an editable paragraph.
+ * Plugin Name:       Current Year Block
+ * Description:       Block to display current year, with editable prefix and suffix. Suitable for copyright notices.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Sideways Design
  * Author URI:        https://sidewaysdesign.com/
  * License:           GPL-2.0-or-later
