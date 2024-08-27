@@ -19,25 +19,14 @@ import './style.scss';
  */
 import Edit from './edit';
 import save from './save';
+import metadata from './block.json';
 
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('create-block/editable-copyright-block', {
-	title: 'Editable Copyright Block',
-	category: 'widgets',
-			attributes: {
-			prefix: {
-				type: 'string',
-				default: '©',
-			},
-			suffix: {
-				type: 'string',
-				default: '[Name of Organization]'
-			},
-		},
+registerBlockType( metadata.name, {
 	/**
 	 * @see ./edit.js
 	 */
@@ -47,4 +36,4 @@ registerBlockType('create-block/editable-copyright-block', {
 	 * @see ./save.js
 	 */
 	save,
-});
+} );
