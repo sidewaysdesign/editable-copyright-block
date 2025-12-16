@@ -25,19 +25,12 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('create-block/editable-copyright-block', {
-	title: 'Editable Copyright Block',
-	category: 'widgets',
-			attributes: {
-			prefix: {
-				type: 'string',
-				default: '©',
-			},
-			suffix: {
-				type: 'string',
-				default: '[Name of Organization]'
-			},
-		},
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+registerBlockType('swd/editable-copyright-block', {
 	/**
 	 * @see ./edit.js
 	 */

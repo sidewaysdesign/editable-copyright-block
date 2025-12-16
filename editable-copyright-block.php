@@ -15,6 +15,33 @@
  */
 
 function create_block_editable_copyright_block_init() {
-	register_block_type( __DIR__ . '/build' );
+	register_block_type( __DIR__ . '/build', array(
+		'render_callback' => 'swd_editable_copyright_render_callback',
+	) );
 }
 add_action( 'init', 'create_block_editable_copyright_block_init' );
+
+/**
+ * Render callback for the dynamic block.
+ *
+ * @param array $attributes Block attributes.
+ * @return string The rendered block HTML.
+ */
+function swd_editable_copyright_render_callback( $attributes ) {
+	$prefix  = isset( $attributes['prefix'] ) ? $attributes['prefix'] : '';
+	$suffix  = isset( $attributes['suffix'] ) ? $attributes['suffix'] : '';
+	$year    = date( 'Y' );
+	
+	// Prepare the wrapper attributes.
+	$wrapper_attributes = get_block_wrapper_attributes( array(
+		'class' => 'editable-copyright-block_wrapper',
+	) );
+
+	return sprintf(
+		'<div %1$s><p>%2$s%3$s%4$s</p></div>',
+		$wrapper_attributes,
+		esc_html( $prefix ),
+		esc_html( $year ),
+		esc_html( $suffix )
+	);
+}

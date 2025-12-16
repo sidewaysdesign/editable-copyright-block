@@ -1,14 +1,46 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/editable-copyright-block",
+	"name": "swd/editable-copyright-block",
 	"version": "1.0.1",
-	"title": "Testimonial Block",
+	"title": "Editable Copyright Block",
 	"category": "widgets",
 	"icon": "calendar-alt",
 	"description": "Adds the current year, with an editable prefix and suffix. Suitable for copyright notices.",
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"text": true,
+			"background": true,
+			"gradients": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"prefix": {
+			"type": "string",
+			"default": "© "
+		},
+		"suffix": {
+			"type": "string",
+			"default": " Company Name"
+		}
 	},
 	"textdomain": "editable-copyright-block",
 	"editorScript": "file:./index.js",

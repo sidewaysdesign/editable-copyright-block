@@ -4,16 +4,8 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
-import { useState } from "@wordpress/element";
-import { useBlockProps } from "@wordpress/block-editor";
-import { TextControl, FontSizePicker } from "@wordpress/components";
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import { TextControl, PanelBody } from "@wordpress/components";
 import "./editor.scss";
 
 /**
@@ -24,34 +16,39 @@ import "./editor.scss";
  *
  * @return {WPElement} Element to render.
  */
-
-// const MY_TEMPLATE = [
-// 	[ 'core/paragraph', { textColor: 'foreground', placeholder: 'Attribution Role' } ],
-// ];
-
 export default function Edit({ attributes, setAttributes }) {
 	const currentYear = new Date().getFullYear();
 	const { prefix, suffix } = attributes;
-	// const [ prefix, setPrefix ] = useState( '©' );
-	// const [ suffix, setSuffix ] = useState( 'Company Name' );
 
 	const blockProps = useBlockProps({
 		className: "editable-copyright-block_wrapper",
 	});
 
 	return (
-		<div {...blockProps}>
-			<TextControl
-				label={__("Prefix", "swd")}
-				value={prefix}
-				onChange={(val) => setAttributes({ prefix: val })}
-			/>
-			<p>{currentYear}</p>
-			<TextControl
-				label={__("Suffix", "swd")}
-				value={suffix}
-				onChange={(val) => setAttributes({ suffix: val })}
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelBody title={__("Settings", "swd")}>
+					<TextControl
+						label={__("Prefix", "swd")}
+						value={prefix}
+						onChange={(val) => setAttributes({ prefix: val })}
+						help={__("Text to appear before the year (e.g., ©).", "swd")}
+					/>
+					<TextControl
+						label={__("Suffix", "swd")}
+						value={suffix}
+						onChange={(val) => setAttributes({ suffix: val })}
+						help={__("Text to appear after the year (e.g., Company Name).", "swd")}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div {...blockProps}>
+				<p>
+					{prefix}
+					{currentYear}
+					{suffix}
+				</p>
+			</div>
+		</>
 	);
 }
